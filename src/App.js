@@ -1,14 +1,14 @@
 import './App.css';
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import MRouter from './router';
 import Tabbar from './components/Tabbar';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <MRouter></MRouter>
       <Tabbar></Tabbar>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
