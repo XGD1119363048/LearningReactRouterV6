@@ -11,6 +11,7 @@ import NotFound from '../views/NotFound'
 import Search from '../views/Search'
 // import Detail from '../views/Detail_Search'
 import Detail from '../views/Detail'
+import Login from '../views/Login'
 
 export default function MRouter() {
   return (
@@ -26,7 +27,14 @@ export default function MRouter() {
 
       <Route path='/cinemas' element={<Cinemas />} />
       <Route path='/cinemas/search' element={<Search />} />
-      <Route path='/center' element={<Center />} />
+      {/* <Route path='/center' element={isAuth() ? <Center /> : <Redirect  to='/login' />} /> */}
+      <Route path='/center' element={<AuthComponent>
+        <Center />
+      </AuthComponent>} />
+
+      {/* render = {() => isAuth() ? <Center /> : <Redirect  to='/login' />} */}
+
+      <Route path='/login' element={<Login />} />
 
       {/* 动态路由 /detail/***** */}
       <Route path='/detail/:id' element={<Detail />} />
@@ -40,4 +48,9 @@ export default function MRouter() {
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
+}
+
+function AuthComponent({children}) {
+  const isLogin = localStorage.getItem('token')
+  return isLogin ? children : <Redirect to='/login' />
 }
