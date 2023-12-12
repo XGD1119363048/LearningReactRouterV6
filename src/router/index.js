@@ -9,6 +9,7 @@ import ComingSoon from '../views/films/ComingSoon'
 import NowPlaying from '../views/films/NowPlaying'
 import NotFound from '../views/NotFound'
 import Search from '../views/Search'
+import Detail from '../views/Detail'
 
 export default function MRouter() {
   return (
@@ -25,6 +26,7 @@ export default function MRouter() {
       <Route path='/cinemas' element={<Cinemas />} />
       <Route path='/cinemas/search' element={<Search />} />
       <Route path='/center' element={<Center />} />
+      <Route path='/detail' element={<Detail />} />
 
       {/* 重定向方案1：使用 Navigate 组件 */}
       {/* <Route path='*' element={<Navigate to='/films' />} /> */}
