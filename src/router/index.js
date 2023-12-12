@@ -1,15 +1,28 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+// import { Navigate, Route, Routes } from 'react-router-dom'
+import Redirect from '../components/Redirect'
 import Center from '../views/Center'
 import Cinemas from '../views/Cinemas'
 import Films from '../views/Films'
+import NotFound from '../views/NotFound'
 
 export default function MRouter() {
   return (
     <Routes>
+      {/* <Route path='/' element={<Films />} /> */}
+      {/* <Route index element={<Films />} /> */}
       <Route path='/films' element={<Films />} />
       <Route path='/cinemas' element={<Cinemas />} />
       <Route path='/center' element={<Center />} />
+
+      {/* 重定向方案1：使用 Navigate 组件 */}
+      {/* <Route path='*' element={<Navigate to='/films' />} /> */}
+      
+      {/* 重定向方案2：自定义 Redirect 组件 */}
+      <Route path='/' element={<Redirect to='/films' />} />
+      
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }
