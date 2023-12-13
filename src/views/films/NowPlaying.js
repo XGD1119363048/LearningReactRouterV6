@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+// import FilmItem from './FilmItem_func'
+import FilmItem from './FilmItem'
 
 export default function NowPlaying() {
   const [list, setList] = useState([])
@@ -17,28 +18,12 @@ export default function NowPlaying() {
     })
   }, [])
 
-  const navigate = useNavigate()
-  const handlePageChange = (id) => {
-    // 跳转页面
-
-    // query 传参 /detail?id=100
-    // navigate(`/detail?id=${id}`)
-
-    // 路由传参 /detail/100
-    navigate(`/detail/${id}`)
-  }
-  
-  
   return (
     <div>
       <ul>
-      {
-        list.map(item => <li key={item.filmId} onClick={() => {
-          handlePageChange(item.filmId)
-        }}>
-          {item.name}
-        </li>)
-      }
+        {
+          list.map(item => <FilmItem key={item.filmId} {...item} />)
+        }
       </ul>
     </div>
   )
